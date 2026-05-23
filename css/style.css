@@ -488,19 +488,25 @@ body {
   box-shadow: 0 8px 24px rgba(180, 160, 210, 0.28);
 }
 
-.footer-sns-btn svg { color: var(--text-sub); }
+.footer-sns-btn svg,
+.footer-sns-btn .tc-icon { color: var(--text-sub); }
 
-.footer-sns-btn:hover svg { color: var(--text-main); }
+.footer-sns-btn:hover svg,
+.footer-sns-btn:hover .tc-icon { color: var(--text-main); }
 
-.footer-sns-btn img {
+/* ツイキャスアイコン（PNG → CSSマスクでcurrentColor対応） */
+.tc-icon {
+  display: block;
+  background-color: currentColor;
+  -webkit-mask: url('../images/twitcasting.png') no-repeat center / contain;
+  mask: url('../images/twitcasting.png') no-repeat center / contain;
   width: 20px;
   height: 20px;
-  object-fit: contain;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter 0.25s ease;
+  flex-shrink: 0;
+  transition: color 0.25s ease;
 }
 
-.footer-sns-btn:hover img { filter: grayscale(1) opacity(0.8); }
+.profile-sns-btn .tc-icon { width: 18px; height: 18px; }
 
 .footer-copy {
   font-size: 0.7rem;
@@ -665,14 +671,14 @@ body {
 /* SNSアイコングリッド */
 .sidebar-icons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 4px;
   margin-bottom: 12px;
 }
 
 .sidebar-icon-btn {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--glass-border);
@@ -690,10 +696,10 @@ body {
   box-shadow: 0 6px 16px rgba(180, 160, 210, 0.28);
 }
 
-.sidebar-icon-btn.x  svg { color: #000; }
-.sidebar-icon-btn.yt svg { color: #ff0000; }
-.sidebar-icon-btn.ig svg { color: #c13584; }
-.sidebar-icon-btn.nn svg { color: #e6001f; }
+.sidebar-icon-btn svg,
+.sidebar-icon-btn .tc-icon { color: var(--text-sub); }
+.sidebar-icon-btn:hover svg,
+.sidebar-icon-btn:hover .tc-icon { color: var(--text-main); }
 
 /* ── アクティブナビ ── */
 .header-nav ul li a.active {
