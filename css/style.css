@@ -462,16 +462,24 @@ body {
 
 .yt-nav:hover .yt-nav-line { width: 46px; }
 
+.yt-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
 .yt-slider-counter {
   text-align: center;
-  margin-top: 14px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.88rem;
   letter-spacing: 0.3em;
   color: var(--text-sub);
+  margin: 0;
 }
 
-.yt-slider-counter #yt-cur {
+.yt-slider-counter #yt-cur,
+.yt-slider-counter #top-cur {
   color: var(--text-main);
   font-size: 1.05rem;
 }

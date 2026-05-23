@@ -84,12 +84,7 @@
     <div class="card yt-section" id="videos">
       <p class="section-title">Videos</p>
 
-      <div class="yt-slider-wrap" id="top-slider">
-
-        <button class="yt-nav yt-prev" aria-label="前の動画">
-          <span class="yt-nav-line"></span>
-          <span class="yt-nav-label">Prev</span>
-        </button>
+      <div id="top-slider">
 
         <div class="yt-slider-viewport">
           <div class="yt-slider-track" id="top-track">
@@ -147,16 +142,21 @@
           </div>
         </div>
 
-        <button class="yt-nav yt-next" aria-label="次の動画">
-          <span class="yt-nav-label">Next</span>
-          <span class="yt-nav-line"></span>
-        </button>
+        <div class="yt-slider-controls">
+          <button class="yt-nav yt-prev" aria-label="前の動画">
+            <span class="yt-nav-line"></span>
+            <span class="yt-nav-label">Prev</span>
+          </button>
+          <p class="yt-slider-counter">
+            <span id="top-cur">1</span><span style="margin:0 6px;opacity:.5"> / </span><span id="top-tot">5</span>
+          </p>
+          <button class="yt-nav yt-next" aria-label="次の動画">
+            <span class="yt-nav-label">Next</span>
+            <span class="yt-nav-line"></span>
+          </button>
+        </div>
 
       </div>
-
-      <p class="yt-slider-counter">
-        <span id="top-cur">1</span><span style="margin:0 6px;opacity:.5"> / </span><span id="top-tot">5</span>
-      </p>
 
     </div>
 
