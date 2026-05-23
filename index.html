@@ -305,6 +305,24 @@
 
     wrap.querySelector('.yt-prev').addEventListener('click', function () { go(cur - 1); });
     wrap.querySelector('.yt-next').addEventListener('click', function () { go(cur + 1); });
+
+    function fitCaptions() {
+      slides.forEach(function (slide) {
+        var cap = slide.querySelector('.yt-caption');
+        if (!cap) return;
+        cap.style.fontSize = '';
+        var size = parseFloat(getComputedStyle(cap).fontSize);
+        while (cap.scrollWidth > cap.offsetWidth && size > 8) {
+          size -= 0.5;
+          cap.style.fontSize = size + 'px';
+        }
+      });
+    }
+    window.addEventListener('load', fitCaptions);
+    window.addEventListener('resize', function () {
+      clearTimeout(window._capTimer);
+      window._capTimer = setTimeout(fitCaptions, 150);
+    });
   })();
   </script>
 </body>
