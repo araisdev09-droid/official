@@ -292,10 +292,16 @@
     function go(idx) {
       stopSlide(cur);
       cur = ((idx % total) + total) % total;
-      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      track.style.transform = 'translateX(-' + (cur * track.parentElement.offsetWidth) + 'px)';
       loadSlide(cur);
       if (curEl) curEl.textContent = cur + 1;
     }
+
+    window.addEventListener('resize', function () {
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(-' + (cur * track.parentElement.offsetWidth) + 'px)';
+      requestAnimationFrame(function () { track.style.transition = ''; });
+    });
 
     wrap.querySelector('.yt-prev').addEventListener('click', function () { go(cur - 1); });
     wrap.querySelector('.yt-next').addEventListener('click', function () { go(cur + 1); });
