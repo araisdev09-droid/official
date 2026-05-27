@@ -1,0 +1,28 @@
+name: Update YouTube videos
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/update-youtube-videos.mjs
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_HANDLE: '@minagi_rei'
+          YOUTUBE_PLAYLIST_ID: PLSHMaQ3XXNQuZChLjK1_z-eQurud9maUh
+          YOUTUBE_MAX_RESULTS: '20'
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update YouTube videos
+          file_pattern: data/videos.json movie.html
